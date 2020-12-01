@@ -29,6 +29,6 @@ Route::prefix('admin')->group(function () {
     Route::get('posts', [AdminPostsController::class, 'index'])->name('admin.posts.index');
     #新增文章表單
     Route::get('posts/create', [AdminPostsController::class, 'create'])->name('admin.posts.create');
-    #修改文章表詹
+    #修改文章表單
     Route::get('posts/{id}/edit', [AdminPostsController::class, 'edit'])->name('admin.posts.edit');
 });
