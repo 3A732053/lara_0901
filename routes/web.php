@@ -31,4 +31,11 @@ Route::prefix('admin')->group(function () {
     Route::get('posts/create', [AdminPostsController::class, 'create'])->name('admin.posts.create');
     #修改文章表單
     Route::get('posts/{id}/edit', [AdminPostsController::class, 'edit'])->name('admin.posts.edit');
+
+    #儲存新增文章
+    Route::post('posts',[AdminPostsController::class, 'store'])->name('admin.posts.store');
+    #更新文章
+    Route::patch('posts/{id}',[AdminPostsController::class, 'update'])->name('admin.posts.update');
+    #刪除文章
+    Route::delete('posts/{id}',[AdminPostsController::class, 'destroy'])->name('admin.posts.destroy');
 });
