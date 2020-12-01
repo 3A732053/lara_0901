@@ -38,13 +38,18 @@
                     </tr>
                 </thead>
                 <tbody>
-                @foreach(range(1, 20) as $id)
+                @foreach($posts as $post)
                     <tr>
-                        <td style="text-align: center">{{ $id }}</td>
-                        <td>文章標題</td>
-                        <td style="text-align: center">V</td>
+                        <td style="text-align: center">
+                            #每個文章的編號
+                            {{ $post -> id }}</td>
+                            #每個文章的標題
+                        <td>{{ $post -> title }}</td>
+                        <td style="text-align: center">
+                            #文章為精選則 v ,反之則 x
+                            {{ ($post -> is_feature)? 'v' : '' }}</td>
                         <td>
-                            <a href="{{ route('admin.posts.edit', $id) }}">編輯</a>
+                            <a href="{{ route('admin.posts.edit', $post -> id) }}">編輯</a>
                             /
                             <a href="#">刪除</a>
                         </td>
