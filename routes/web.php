@@ -22,9 +22,13 @@ Route::get('posts', [PostsController::class, 'index'])->name('posts.index');
 Route::get('posts/{id}', [PostsController::class, 'show'])->name('posts.show');
 
 Route::prefix('admin')->group(function () {
+    #後台表單
     Route::get('/', [AdminDashboardController::class, 'index'])->name('admin.dashboard.index');
 
+    #列出所有文章表單
     Route::get('posts', [AdminPostsController::class, 'index'])->name('admin.posts.index');
+    #新增文章表單
     Route::get('posts/create', [AdminPostsController::class, 'create'])->name('admin.posts.create');
+    #修改文章表詹
     Route::get('posts/{id}/edit', [AdminPostsController::class, 'edit'])->name('admin.posts.edit');
 });

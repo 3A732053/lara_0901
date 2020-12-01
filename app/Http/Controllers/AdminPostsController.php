@@ -1,12 +1,16 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Post;
 class AdminPostsController extends Controller
 {
     public function index()
     {
-        return view('admin.posts.index');
+        #按照created_at欄位做遞減排序，印出所有資料
+        $posts = Post::orderBy('created_at','DESC')->get();
+        #指定posts資料表執行$posts命令
+        $data = ['posts' => $posts];
+        return view('admin.posts.index',$data);
     }
 
     public function create()
