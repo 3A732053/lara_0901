@@ -41,17 +41,17 @@
                 @foreach($posts as $post)
                     <tr>
                         <td style="text-align: center">
-                            #每個文章的編號
                             {{ $post -> id }}</td>
-                            #每個文章的標題
                         <td>{{ $post -> title }}</td>
                         <td style="text-align: center">
-                            #文章為精選則 v ,反之則 x
                             {{ ($post -> is_feature)? 'v' : '' }}</td>
                         <td>
-                            <a href="{{ route('admin.posts.edit', $post -> id) }}">編輯</a>
                             <a class="btn btn-sm btn-primary" href="{{route('admin.posts.edit',$post -> id)}}">編輯</a>
-                            <a href="#">刪除</a>
+                            <form action="/admin/posts/{{($post->id)}}" method="POST" style="display: inline">
+                                @method('DELETE')
+                                @csrf
+                                <button class="btn btn-sm btn-danger" type="submit">刪除</button>
+                            </form>
                         </td>
                     </tr>
                 @endforeach
